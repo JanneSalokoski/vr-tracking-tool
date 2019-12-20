@@ -1,5 +1,5 @@
 import React from 'react';
-import "Mockup.scss";
+import "./Mockup.scss";
 
 const Mockup = () => {
   return (
