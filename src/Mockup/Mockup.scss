@@ -1,4 +1,4 @@
-$default-font-size: 1em;
+$default-font-size: 13px;
 
 body, html, * {
   margin: 0px;
@@ -12,7 +12,7 @@ body {
   padding: 1em;
 
   font-size: $default-font-size;
-  font-family: "San Francisco", sans-serif;
+  font-family: "Source Code Pro", sans-serif;
 
   background-color: black;
   color: white;
@@ -30,6 +30,15 @@ h1 {
   font-size: $default-font-size;
 }
 
+a {
+  color: white;
+  text-decoration: underline;
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+}
 
 main div.section {
   &:not(:first-child) {
@@ -39,6 +48,15 @@ main div.section {
   span:not(:first-child) {
     margin-left: 1ch;
   }
+}
+
+span {
+  padding: 2px;
+}
+
+main div.view_selector .view_option.selected {
+  text-decoration: underline;
+  border-radius: 3px;
 }
 
 main div.settings input#select_train {
@@ -64,8 +82,28 @@ main div.view {
     word-break: break-word;
   }
 
+  .info .status {
+    background-color: green;
+    border-radius: 3px;
+  }
+
+  .info .late {
+    background-color: red;
+    border-radius: 3px;
+  }
+
+  .station.passed {
+    color: #aaa;
+  }
+
+  .station.current {
+    color: green;
+    font-weight: bold;
+  }
+
   .station span.station_name {
     width: 10ch;
+    text-decoration: underline;
   }
 
   .station span.departure_time {
@@ -82,5 +120,10 @@ main div.view {
 
   .station span.late {
     width: 7ch;
+  }
+
+  .station.headers {
+    text-decoration: none;
+    font-weight: bold;
   }
 }
