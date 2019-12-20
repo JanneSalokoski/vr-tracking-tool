@@ -4,6 +4,8 @@ import './index.css';
 import VrTrackingTool from './App';
 import * as serviceWorker from './serviceWorker';
 
+require('typeface-courier-prime')
+
 ReactDOM.render(<VrTrackingTool />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

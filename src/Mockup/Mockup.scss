@@ -1,3 +1,86 @@
+$default-font-size: 1em;
+
+body, html, * {
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
-  
+  width: calc(100vw - 2em);
+  height: calc(100vh - 2em);
+
+  padding: 1em;
+
+  font-size: $default-font-size;
+  font-family: "San Francisco", sans-serif;
+
+  background-color: black;
+  color: white;
+}
+
+header {
+  margin-bottom: 1em;
+}
+
+footer {
+  margin-top: 1em;
+}
+
+h1 {
+  font-size: $default-font-size;
+}
+
+
+main div.section {
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  span:not(:first-child) {
+    margin-left: 1ch;
+  }
+}
+
+main div.settings input#select_train {
+  background: black;
+  color: white;
+
+  text-decoration: underline;
+
+  margin-left: 1ch;
+  border: none;
+}
+
+main div.view {
+  .station span {
+    display: inline-block;
+
+    // background-color: red;
+
+    border-radius: 2px;
+
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .station span.station_name {
+    width: 10ch;
+  }
+
+  .station span.departure_time {
+    width: 8ch;
+  }
+
+  .station span.actual_departure_time {
+    width: 12ch;
+  }
+
+  .station span.estimated_departure_time {
+    width: 12ch;
+  }
+
+  .station span.late {
+    width: 7ch;
+  }
 }
