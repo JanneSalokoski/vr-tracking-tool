@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import VrTrackingTool from './App';
+import VrTrackingTool from './VrTrackingTool';
 import * as serviceWorker from './serviceWorker';
-
-require('typeface-courier-prime')
 
 ReactDOM.render(<VrTrackingTool />, document.getElementById('root'));
 
