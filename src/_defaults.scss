@@ -1,0 +1,34 @@
+// Colors
+$color-black-dark: #000;
+$color-black-light: #111;
+
+$color-white-dark: #eee;
+$color-white-light: #fff;
+
+// Font weights
+$font-weight-light: 100;
+$font-weight-regular: 400;
+$font-weight-bold: 600;
+
+// Base font
+$base-font-family: "Fira Sans", sans-serif;
+$base-font-weight: $font-weight-regular;
+$base-font-size: 12px;
+$base-line-height: 1.5;
+
+// Fixed font
+$fixed-font-family: "Fira Mono", monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Sizes
+$base-application-width: 40em;
+
+// Margins
+$base-margin-normal: 1em;
+
+$base-margin-large: $base-margin-normal * 2;
+$base-margin-extralarge: $base-margin-large * 2;
+
+$base-margin-small: $base-margin-normal / 2;
+$base-margin-extrasmall: $base-margin-small / 2;

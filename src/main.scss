@@ -1,0 +1,20 @@
+@import "./_defaults.scss";
+
+body {
+  width: calc(100vw - ($base-margin-normal * 2));
+  max-width: $base-application-width;
+
+  height: calc(100vh - ($base-margin-normal * 2));
+
+  padding: $base-margin-normal;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: $color-black-dark;
+  color: $color-white-dark;
+
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: $font-weight-regular;
+  line-height: $base-line-height;
+}
