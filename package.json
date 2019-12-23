@@ -11,6 +11,8 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
     "typeface-courier-prime": "0.0.59",
+    "typeface-fira-mono": "0.0.72",
+    "typeface-fira-sans": "0.0.75",
     "typeface-source-code-pro": "0.0.71"
   },
   "scripts": {
