@@ -1,32 +1,16 @@
 import React from 'react';
 import "./TrainItem.scss";
 
-const dateFormat = require('dateformat');
-
 const TrainItem = (props) => {
-  const trainName = `${props.data.trainType}${props.data.trainNumber}`;
-
-  const dateToTime = (date) =>
-    `~${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-
-  const getRowTime = (row) =>
-    new Date(row.liveEstimateTime || row.actualTime || row.scheduledTime);
-
   const getTimeTableRow = (row) => (
-    <tr className={
-        row.type + " " +
-        ((row.trainStopping) ? "STOP" : "PASS") + " " +
-        ((getRowTime(row) > new Date()) ? "arriving" : "passed")
-      }>
+    <tr className={"row"}>
       <td className="stationShortCode">{row.stationShortCode}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
-      <td className="time">{getRowTime(row)}</td>
+      <td className="time">{}</td>
       <td className="delay">{row.liveEstimateTime}</td>
     </tr>
   );
 
-  const getTimeTableRows = (timetableRows) =>
-    timetableRows.map(getTimeTableRow);
 
   return(
     <div className="TrainItem">
@@ -48,7 +32,7 @@ const TrainItem = (props) => {
             </tr>
           </thead>
           <tbody>
-            {getTimeTableRows(props.data.timeTableRows)}
+            
           </tbody>
         </table>
       </div>
