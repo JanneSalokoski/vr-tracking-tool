@@ -2,11 +2,13 @@
 $color-black-dark: #000;
 $color-black-light: #111;
 
-$color-white-dark: #eee;
+$color-white-dark: #ddd;
 $color-white-light: #fff;
 
+$color-red: red;
+
 // Font weights
-$font-weight-light: 100;
+$font-weight-light: 200;
 $font-weight-regular: 400;
 $font-weight-bold: 600;
 
@@ -32,3 +34,6 @@ $base-margin-extralarge: $base-margin-large * 2;
 
 $base-margin-small: $base-margin-normal / 2;
 $base-margin-extrasmall: $base-margin-small / 2;
+
+// Borders
+$base-border-radius: 2px;

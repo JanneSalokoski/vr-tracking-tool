@@ -7,6 +7,7 @@ function VrTrackingTool() {
   return (
     <div className="vr-tracking-tool">
       <Components.Header />
+      <Components.TrainView />
     </div>
   );
 }

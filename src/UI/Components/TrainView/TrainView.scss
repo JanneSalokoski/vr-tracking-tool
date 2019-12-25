@@ -1,0 +1,12 @@
+@import "../../../_defaults.scss";
+
+div.module.TrainView {
+  div.trainList {
+    display: grid;
+    width: 100%;
+
+    // TODO: Media queries
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}

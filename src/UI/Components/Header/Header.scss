@@ -1,3 +1,47 @@
+@import "../../../_defaults.scss";
+
 div.header {
-  
+  h1.application-title {
+    font-size: 200%;
+    font-weight: $font-weight-bold;
+
+    text-align: center;
+
+    margin-bottom: $base-margin-small;
+
+    span.version {
+      color: $color-red;
+      background-color: $color-black-light;
+
+      padding: $base-margin-extrasmall;
+
+      font-family: $fixed-font-family;
+      font-size: $fixed-font-size;
+
+      border-radius: $base-border-radius;
+    }
+  }
+
+  nav {
+    text-align: center;
+    font-size: 125%;
+
+    margin-bottom: $base-margin-large;
+
+    span.nav-item {
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      &:not(:last-child)::after {
+        content: " • ";
+      }
+    }
+
+    span.nav-item.current > a {
+      text-decoration: underline;
+      color: $color-red;
+    }
+  }
 }

@@ -18,3 +18,11 @@ body {
   font-weight: $font-weight-regular;
   line-height: $base-line-height;
 }
+
+h2 {
+  font-weight: $font-weight-bold;
+}
+
+div.module {
+  margin-bottom: $base-margin-normal;
+}

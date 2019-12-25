@@ -1,0 +1,77 @@
+@import "../../../_defaults.scss";
+
+div.TrainItem {
+  padding: $base-margin-small;
+  margin: $base-margin-small;
+
+  background-color: $color-black-light;
+  border-radius: $base-border-radius;
+
+  display: grid;
+
+  grid-template-columns: 3em auto 3em;
+  grid-template-rows: auto;
+
+  grid-template-areas:
+    "controls title settings"
+    "o-d o-d o-d"
+    "timetable timetable timetable"
+    "status info info";
+
+  div.controls {
+    grid-area: controls;
+    overflow: none;
+  }
+
+  div.title {
+    grid-area: title;
+    text-align: center;
+    font-weight: $font-weight-bold;
+  }
+
+  div.settings {
+    grid-area: settings;
+    text-align: right;
+  }
+
+  div.o-d {
+    grid-area: o-d;
+    text-align: center;
+  }
+
+  div.timetable {
+    grid-area: timetable;
+
+    table {
+      width: 100%;
+
+      tr.ARRIVAL.STOP {
+        color: green;
+
+        &.passed {
+          color: darken(green, 10%);
+        }
+      }
+
+      tr.DEPARTURE.STOP {
+        color: red;
+
+        &.passed {
+          color: darken(red, 20%);
+        }
+      }
+
+      tr.PASS {
+        color: #555;
+      }
+    }
+  }
+
+  div.status {
+    grid-area: status;
+  }
+
+  div.info {
+    grid-area: info;
+  }
+}
