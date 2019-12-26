@@ -21,8 +21,12 @@ const TrainView = (props) => {
     return trainItemElements;
   }
 
+  let identifier;
+  const updateIdentifier = (event) => {
+    identifier = event.target.value;
+  }
+
   const createNewTrain = async () => {
-    const identifier = 266;
     const train = await API.getTrains(identifier);
     dispatch({type: "CREATE_TRAIN", trainObject: train});
 
@@ -33,7 +37,8 @@ const TrainView = (props) => {
 
   return(
     <div className="module TrainView">
-      <input type="button" onClick={createNewTrain} value="Create train (IC12)"></input>
+      <input type="text" placeholder="trainNumber" onChange={updateIdentifier}/>
+      <input type="button" onClick={createNewTrain} value="Create train"></input>
       <div className="trainList">
         {createTrainItemElements(state.trains)}
       </div>

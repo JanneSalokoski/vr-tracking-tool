@@ -32,7 +32,7 @@ const API = {
       const response = await axios.get(`https://rata.digitraffic.fi/api/v1/${endpoint}`);
       return response;
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   },
 

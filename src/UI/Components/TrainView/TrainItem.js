@@ -27,7 +27,7 @@ const TrainItem = (props) => {
   return(
     <div className="TrainItem">
       <div className="controls">[X][↑][O]</div>
-      <div className="title">{props.data.trainNumber}</div>
+      <div className="title">{props.data.trainName}</div>
       <div className="settings">...</div>
 
       <div className="o-d">[21:21:00] HKI → JSU [03:22:43]</div>
