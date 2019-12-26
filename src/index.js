@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+
+import {DispatchProvider} from './store.js';
 import VrTrackingTool from './VrTrackingTool';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<VrTrackingTool />, document.getElementById('root'));
+ReactDOM.render(<DispatchProvider><VrTrackingTool /></DispatchProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

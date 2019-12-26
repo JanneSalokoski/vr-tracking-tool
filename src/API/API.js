@@ -7,6 +7,8 @@ class TimeTableRow {
     this.commercialStop = data.commercialStop;
     this.commercialTrack = data.commercialTrack;
     this.scheduledTime = data.scheduledTime;
+    this.differenceInMinutes = data.differenceInMinutes;
+    this.liveEstimateTime = data.liveEstimateTime;
   }
 }
 
@@ -37,6 +39,12 @@ const API = {
   getTrains: async (train_number, departure_date="latest", version=0) => {
     const response = await API.getData(`trains/${departure_date}/${train_number}?version=${version}`);
     return new Train(response.data[0]);
+  },
+
+  subscribeToTrainUpdates: async (trainObject, callback) => {
+    const response = await API.getTrains(trainObject.trainNumber);
+    response.trainNumber = trainObject.trainNumber;
+    callback(response);
   }
 };
 

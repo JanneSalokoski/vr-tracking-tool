@@ -6,16 +6,21 @@ const TrainItem = (props) => {
     <tr className={"row"}>
       <td className="stationShortCode">{row.stationShortCode}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
-      <td className="time">{}</td>
-      <td className="delay">{row.liveEstimateTime}</td>
+      <td className="time">{row.scheduledTime}</td>
+      <td className="delay">{row.differenceInMinutes}</td>
+      <td className="estimate">{row.liveEstimateTime}</td>
     </tr>
   );
 
+  const getTimeTableRows = (rows) =>
+    rows.map(row => getTimeTableRow(row));
+
+  console.log(props.data.timeTableRows)
 
   return(
     <div className="TrainItem">
       <div className="controls">[X][↑][O]</div>
-      <div className="title">IC12</div>
+      <div className="title">{props.data.trainNumber}</div>
       <div className="settings">...</div>
 
       <div className="o-d">[21:21:00] HKI → JSU [03:22:43]</div>
@@ -32,7 +37,7 @@ const TrainItem = (props) => {
             </tr>
           </thead>
           <tbody>
-            
+            {getTimeTableRows(props.data.timeTableRows)}
           </tbody>
         </table>
       </div>
