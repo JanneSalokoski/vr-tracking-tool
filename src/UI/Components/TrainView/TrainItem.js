@@ -1,14 +1,21 @@
 import React from 'react';
+import dateFormat from "dateformat";
+
 import "./TrainItem.scss";
+
+const formatTime = (date) => {
+  const timestampFormat = "HH:MM:ss";
+  return (date) ? dateFormat(date, timestampFormat) : "";
+}
 
 const TrainItem = (props) => {
   const getTimeTableRow = (row) => (
     <tr className={"row"}>
       <td className="stationShortCode">{row.stationShortCode}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
-      <td className="time">{row.scheduledTime}</td>
+      <td className="time">{formatTime(row.scheduledTime)}</td>
       <td className="delay">{row.differenceInMinutes}</td>
-      <td className="estimate">{row.liveEstimateTime}</td>
+      <td className="liveEstimateTime">{formatTime(row.liveEstimateTime)}</td>
     </tr>
   );
 
