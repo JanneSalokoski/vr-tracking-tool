@@ -45,24 +45,12 @@ div.TrainItem {
     table {
       width: 100%;
 
-      tr.ARRIVAL.STOP {
-        color: green;
+      tr.STOP {
 
-        &.passed {
-          color: darken(green, 10%);
-        }
-      }
-
-      tr.DEPARTURE.STOP {
-        color: red;
-
-        &.passed {
-          color: darken(red, 20%);
-        }
       }
 
       tr.PASS {
-        color: #555;
+        visibility: collapse;
       }
     }
   }

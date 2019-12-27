@@ -31,6 +31,7 @@ const TrainView = (props) => {
     dispatch({type: "CREATE_TRAIN", trainObject: train});
 
     API.subscribeToTrainUpdates(train, (newTrainObject) => {
+      console.log("UPDATE");
       dispatch({type: "UPDATE_TRAIN", trainObject: newTrainObject});
     });
   }

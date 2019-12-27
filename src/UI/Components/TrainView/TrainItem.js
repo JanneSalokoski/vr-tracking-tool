@@ -4,16 +4,16 @@ import dateFormat from "dateformat";
 import "./TrainItem.scss";
 
 const formatTime = (date) => {
-  const timestampFormat = "HH:MM:ss";
+  const timestampFormat = "HH:MM";
   return (date) ? dateFormat(date, timestampFormat) : "";
 }
 
 const TrainItem = (props) => {
   const getTimeTableRow = (row) => (
-    <tr className={"row"}>
+    <tr className={`row ${row.commercialStop ? "STOP" : "PASS"}`}>
       <td className="stationShortCode">{row.stationShortCode}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
-      <td className="time">{formatTime(row.scheduledTime)}</td>
+      <td className="departure">{formatTime(row.departure.scheduledTime)}</td>
       <td className="delay">{row.differenceInMinutes}</td>
       <td className="liveEstimateTime">{formatTime(row.liveEstimateTime)}</td>
     </tr>
@@ -22,15 +22,19 @@ const TrainItem = (props) => {
   const getTimeTableRows = (rows) =>
     rows.map(row => getTimeTableRow(row));
 
-  console.log(props.data.timeTableRows)
-
   return(
     <div className="TrainItem">
       <div className="controls">[X][↑][O]</div>
       <div className="title">{props.data.trainName}</div>
       <div className="settings">...</div>
 
-      <div className="o-d">[21:21:00] HKI → JSU [03:22:43]</div>
+      <div className="o-d">
+        <span className="startTime">{`[${formatTime(props.data.fromStation.departure.scheduledTime)}] `}</span>
+        <span className="from">{props.data.fromStation.stationShortCode}</span>
+        <span className="separator"> → </span>
+        <span className="to">{props.data.toStation.stationShortCode}</span>
+        <span className="endTime">{` [${formatTime(props.data.toStation.arrival.scheduledTime)}]`}</span>
+      </div>
 
       <div className="timetable">
         <table>
@@ -38,7 +42,7 @@ const TrainItem = (props) => {
             <tr>
               <th>Station</th>
               <th>Track</th>
-              <th>Time</th>
+              <th>Departure</th>
               <th>Delay</th>
               <th>Estimate</th>
             </tr>
@@ -49,9 +53,9 @@ const TrainItem = (props) => {
         </table>
       </div>
 
-      <div className="status">OK</div>
+      <div className="status">{props.data.runningCurrently ? "ONLINE" : "OFFLINE"}</div>
 
-      <div className="info">Turvalaitevika</div>
+      <div className="info"></div>
     </div>
   );
 }
