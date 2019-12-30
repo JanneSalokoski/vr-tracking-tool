@@ -11,6 +11,9 @@ const reducer = (state, action) => {
     case 'UPDATE_TRAIN':
       newState.trains[action.trainObject.trainName] = action.trainObject;
       return newState;
+    case 'TRACKING':
+      newState.trains[action.train].currentStation = action.data.station; 
+      return newState;
     default:
       throw new Error();
   }

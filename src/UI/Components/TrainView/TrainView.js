@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import {API} from "../../../API/API.js";
+import {API, Train} from "../../../API/API.js";
 import { store } from '../../../store.js';
 
 import TrainItem from "./TrainItem.js";
@@ -30,14 +30,23 @@ const TrainView = (props) => {
     const train = await API.getTrains(identifier);
     dispatch({type: "CREATE_TRAIN", trainObject: train});
 
-    API.subscribeToTrainUpdates(train, (newTrainObject) => {
-      console.log("UPDATE");
+    const tracking = await API.getTracking(identifier);
+    dispatch({type: "TRACKING", train: train.trainName, data: tracking});
+
+    API.MQTT.subscribeToTopic(`trains/+/${train.trainNumber}/#`, (msg) => {
+      //console.log(JSON.parse(msg.payloadString));
+      let newTrainObject = new Train(JSON.parse(msg.payloadString));
       dispatch({type: "UPDATE_TRAIN", trainObject: newTrainObject});
     });
+
+    API.MQTT.subscribeToTopic(`train-tracking/+/${train.trainNumber}/#`, (msg) =>
+      dispatch({type: "TRACKING", train: train.trainName, data: JSON.parse(msg.payloadString)})
+    );
   }
 
   return(
     <div className="module TrainView">
+      <input type="button" value="Disconnect" onClick={API.disconnect} />
       <input type="text" placeholder="trainNumber" onChange={updateIdentifier}/>
       <input type="button" onClick={createNewTrain} value="Create train"></input>
       <div className="trainList">

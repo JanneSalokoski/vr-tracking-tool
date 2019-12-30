@@ -18,6 +18,14 @@ div.TrainItem {
     "timetable timetable timetable"
     "status info info";
 
+  &.NEW {
+    border: 2px solid blue;
+  }
+
+  &.UPDATED {
+    border: 2px solid green;
+  }
+
   div.controls {
     grid-area: controls;
     overflow: none;
@@ -51,6 +59,15 @@ div.TrainItem {
 
       tr.PASS {
         visibility: collapse;
+      }
+
+      tr.currentStation {
+        background-color: darkred;
+      }
+
+      tr.currentStation.PASS {
+        visibility: visible;
+        color: red;
       }
     }
   }
