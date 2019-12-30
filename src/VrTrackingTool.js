@@ -7,8 +7,7 @@ import Components from "./UI/Components/Components.js";
 function VrTrackingTool() {
   API.MQTT.connect((res) => {
     console.log("CONNECTED");
-  }
-}
+  });
 
   return (
     <div className="vr-tracking-tool">
