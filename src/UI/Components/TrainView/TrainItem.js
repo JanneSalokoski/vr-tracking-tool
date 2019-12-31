@@ -10,7 +10,7 @@ const formatTime = (date) => {
 
 const TrainItem = (props) => {
   const getTimeTableRow = (row) => (
-    <tr className={`row ${row.commercialStop ? "STOP" : "PASS"} ${(row.stationShortCode === props.data.currentStation) ? "currentStation" : ""}`}>
+    <tr key={row.stationShortCode} className={`row ${row.commercialStop ? "STOP" : "PASS"} ${(row.stationShortCode === props.data.currentStation) ? "currentStation" : ""}`}>
       <td className="stationShortCode">{row.stationShortCode}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
       <td className="departure">{formatTime(row.departure.scheduledTime)}</td>

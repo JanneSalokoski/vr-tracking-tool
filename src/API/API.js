@@ -89,39 +89,46 @@ const API = {
     success: (res) => console.log("Connected: ", res),
     failure: (err) => console.log("Error: ", err),
 
-    connect: (callback) => {
-      API.MQTT.client.connect({
-        timeout: 3,
-        keepAliveInterval: 60,
-        useSSL: true,
-        onSuccess: callback,
-        onFailure: API.MQTT.failure
+    connectionLost: res => console.log("Connection lost: ", res),
+    messageArrived: msg => {
+      const parseTopic = (topic) => topic.split("/");
+
+      const levelMatches = (level_a, level_b) =>
+        (level_a === "+" || level_a === "#") ? true : (level_a === level_b) ? true : false;
+
+      const topicMatches = (topic_a, topic_b) =>
+        topic_a.map((level, index) => levelMatches(level, topic_b[index]));
+
+
+      //console.log(API.MQTT.topics);
+
+      let messageTopic = parseTopic(msg.topic);
+      API.MQTT.topics.map(subscription => {
+        let subscriptionTopic = parseTopic(subscription.topic);
+        let matches = topicMatches(subscriptionTopic, messageTopic);
+        //console.log("MATCHES: ", matches.every(item => item === true), subscriptionTopic, messageTopic)
+        if (matches.every(item => item === true)) {
+          subscription.callback(msg);
+        }
       });
+    },
 
-      API.MQTT.client.onConnectionLost = res => console.log("Connection lost: ", res);
+    connect: (callback) => {
 
-      API.MQTT.client.onMessageArrived = msg => {
-        console.log("lol");
-        const parseTopic = (topic) => topic.split("/");
-
-        const levelMatches = (level_a, level_b) =>
-          (level_a === "+" || level_a === "#") ? true : (level_a === level_b) ? true : false;
-
-        const topicMatches = (topic_a, topic_b) =>
-          topic_a.map((level, index) => levelMatches(level, topic_b[index]));
-
-
-        console.log(API.MQTT.topics);
-
-        let messageTopic = parseTopic(msg.topic);
-        API.MQTT.topics.map(subscription => {
-          let subscriptionTopic = parseTopic(subscription.topic);
-          let matches = topicMatches(subscriptionTopic, messageTopic);
-          //console.log("MATCHES: ", matches.every(item => item === true), subscriptionTopic, messageTopic)
-          if (matches.every(item => item === true)) {
-            subscription.callback(msg);
-          }
+      try {
+        API.MQTT.client.connect({
+          timeout: 3,
+          keepAliveInterval: 60,
+          useSSL: true,
+          onSuccess: (res) => callback({success: true, res: res}),
+          onFailure: (res) => callback({success: false, res: res})
         });
+
+        API.MQTT.client.onConnectionLost = API.MQTT.connectionLost;
+        API.MQTT.client.onMessageArrived = API.MQTT.messageArrived;
+      }
+      catch (error) {
+        console.log(error);
       }
     },
 
@@ -131,6 +138,11 @@ const API = {
     }
 
 
+  },
+
+  disconnect: async (callback) => {
+    await API.MQTT.client.disconnect();
+    callback();
   },
 
   subscribeToTrainUpdates: async (trainObject, callback) => {

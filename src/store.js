@@ -1,10 +1,24 @@
 import React, {createContext, useReducer} from 'react';
 
-const initialState = {trains: {}};
+const initialState = {
+  connected: false,
+  trains: {},
+  stations: {}
+};
 
 const reducer = (state, action) => {
   const newState = {...state}
   switch (action.type) {
+    case 'CONNECTION_SUCCESFULL':
+      console.log("Connected");
+      newState.connected = true;
+      return newState;
+    case 'CONNECTION_FAILED':
+      newState.connected = false;
+      return newState;
+    case 'DISCONNECTED':
+      newState.connected = false;
+      return newState;
     case 'CREATE_TRAIN':
       newState.trains[action.trainObject.trainName] = action.trainObject;
       return newState;
@@ -12,7 +26,7 @@ const reducer = (state, action) => {
       newState.trains[action.trainObject.trainName] = action.trainObject;
       return newState;
     case 'TRACKING':
-      newState.trains[action.train].currentStation = action.data.station; 
+      newState.trains[action.train].currentStation = action.data.station;
       return newState;
     default:
       throw new Error();

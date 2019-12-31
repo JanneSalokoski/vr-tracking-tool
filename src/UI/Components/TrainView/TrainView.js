@@ -46,7 +46,6 @@ const TrainView = (props) => {
 
   return(
     <div className="module TrainView">
-      <input type="button" value="Disconnect" onClick={API.disconnect} />
       <input type="text" placeholder="trainNumber" onChange={updateIdentifier}/>
       <input type="button" onClick={createNewTrain} value="Create train"></input>
       <div className="trainList">
