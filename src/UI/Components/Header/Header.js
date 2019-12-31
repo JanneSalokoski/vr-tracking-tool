@@ -10,7 +10,7 @@ const Header = (props) => {
 
   return (
     <div className="module header">
-      <h1 className="application-title">VR Tracking Tool <span className="version">{`[${state.meta.majorVersion}.${state.meta.minorVersion} ${state.meta.releaseType}]`}</span></h1>
+      <h1 className="application-title">VR Tracking Tool <span className="version">{`[${state.meta.version.majorVersion}.${state.meta.version.minorVersion} ${state.meta.version.releaseType}]`}</span></h1>
       <nav>
         <span className="nav-item current"><a href="trains">Trains</a></span>
         <span className="nav-item"><a href="stations">Stations</a></span>

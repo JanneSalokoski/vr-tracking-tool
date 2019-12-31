@@ -1,14 +1,17 @@
 import React, {createContext, useReducer} from 'react';
 
 const initialState = {
+  counter: 0,
   connected: false,
   trains: {},
   stations: {},
   stationInfo: {},
   meta: {
-    majorVersion: 0,
-    minorVersion: 1,
-    releaseType: "DEV",
+    version: {
+      majorVersion: 0,
+      minorVersion: 1,
+      releaseType: "DEV",
+    }
   }
 };
 
@@ -16,7 +19,7 @@ const reducer = (state, action) => {
   const newState = {...state}
   switch (action.type) {
     case 'CONNECTION_SUCCESFULL':
-      console.log("Connected");
+      //console.log("Connected");
       newState.connected = true;
       return newState;
     case 'CONNECTION_FAILED':
