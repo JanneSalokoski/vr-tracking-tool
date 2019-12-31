@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import dateFormat from "dateformat";
+
+import {store} from "../../../store.js";
 
 import "./TrainItem.scss";
 
@@ -9,9 +11,12 @@ const formatTime = (date) => {
 }
 
 const TrainItem = (props) => {
+  const applicationState = useContext(store);
+  const {state, dispatch} = applicationState;
+
   const getTimeTableRow = (row) => (
     <tr key={row.stationShortCode} className={`row ${row.commercialStop ? "STOP" : "PASS"} ${(row.stationShortCode === props.data.currentStation) ? "currentStation" : ""}`}>
-      <td className="stationShortCode">{row.stationShortCode}</td>
+      <td className="stationShortCode">{state.stationInfo[row.stationShortCode].stationName}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
       <td className="departure">{formatTime(row.departure.scheduledTime)}</td>
       <td className="delay">{row.differenceInMinutes}</td>
@@ -30,9 +35,9 @@ const TrainItem = (props) => {
 
       <div className="o-d">
         <span className="startTime">{`[${formatTime(props.data.fromStation.departure.scheduledTime)}] `}</span>
-        <span className="from">{props.data.fromStation.stationShortCode}</span>
+        <span className="from">{state.stationInfo[props.data.fromStation.stationShortCode].stationName}</span>
         <span className="separator"> → </span>
-        <span className="to">{props.data.toStation.stationShortCode}</span>
+        <span className="to">{state.stationInfo[props.data.toStation.stationShortCode].stationName}</span>
         <span className="endTime">{` [${formatTime(props.data.toStation.arrival.scheduledTime)}]`}</span>
       </div>
 

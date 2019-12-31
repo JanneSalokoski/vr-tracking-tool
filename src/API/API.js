@@ -79,6 +79,12 @@ const API = {
     return response.data[0];
   },
 
+  getStationInfo: async () => {
+    const response = await API.getData("metadata/stations");
+    const data = response.data.reduce((data, station) => (data[station.stationShortCode] = station, data), {});
+    return data;
+  },
+
 
   // MQTT WebSocket
   MQTT: {

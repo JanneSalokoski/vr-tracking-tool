@@ -4,6 +4,7 @@ const initialState = {
   connected: false,
   trains: {},
   stations: {},
+  stationInfo: {},
   meta: {
     majorVersion: 0,
     minorVersion: 1,
@@ -23,6 +24,10 @@ const reducer = (state, action) => {
       return newState;
     case 'DISCONNECTED':
       newState.connected = false;
+      return newState;
+    case 'SET_STATION_INFO':
+      newState.stationInfo = action.data;
+      console.log(action.data);
       return newState;
     case 'CREATE_TRAIN':
       newState.trains[action.trainObject.trainName] = action.trainObject;

@@ -10,7 +10,7 @@ function VrTrackingTool() {
   const applicationState = useContext(store);
   const {state, dispatch} = applicationState;
 
-  const connect_client = () => {
+  const connectClient = () => {
     API.MQTT.connect((res) => {
       if (res.success) {
         dispatch({type: "CONNECTION_SUCCESFULL"});
@@ -20,14 +20,20 @@ function VrTrackingTool() {
     });
   }
 
-  const connect_application = () => {
+  const connectApplication = () => {
     if (!state.connected) {
-      API.MQTT.client.isConnected() ? dispatch({type: "CONNECTION_SUCCESFULL"}) : connect_client();
+      API.MQTT.client.isConnected() ? dispatch({type: "CONNECTION_SUCCESFULL"}) : connectClient();
     }
   };
 
+  const getStationInfo = async () => {
+    const stationInfo = await API.getStationInfo();
+    dispatch({type: "SET_STATION_INFO", data: stationInfo});
+  }
+
   const init = () => {
-    connect_application();
+    connectApplication();
+    getStationInfo();
   }
 
   // Run init only when loading app for the first time
@@ -38,7 +44,7 @@ function VrTrackingTool() {
   return (
     <div className="vr-tracking-tool">
       <Components.Header />
-      <input type="button" value="Connect" onClick={connect_application} />
+      <input type="button" value="Connect" onClick={connectApplication} />
       <input type="button" value="Disconnect" onClick={
         () => API.disconnect(() => {dispatch({type: "DISCONNECTED"})})
       } />
