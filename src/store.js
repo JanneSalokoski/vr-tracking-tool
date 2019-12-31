@@ -3,7 +3,12 @@ import React, {createContext, useReducer} from 'react';
 const initialState = {
   connected: false,
   trains: {},
-  stations: {}
+  stations: {},
+  meta: {
+    majorVersion: 0,
+    minorVersion: 1,
+    releaseType: "Alpha",
+  }
 };
 
 const reducer = (state, action) => {
