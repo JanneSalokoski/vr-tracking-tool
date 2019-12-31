@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/vr-tracking-tool/static/css/main.ed287022.chunk.css",
+    "main.js": "/vr-tracking-tool/static/js/main.09685a21.chunk.js",
+    "main.js.map": "/vr-tracking-tool/static/js/main.09685a21.chunk.js.map",
+    "runtime-main.js": "/vr-tracking-tool/static/js/runtime-main.cbff670e.js",
+    "runtime-main.js.map": "/vr-tracking-tool/static/js/runtime-main.cbff670e.js.map",
+    "static/js/2.f0201204.chunk.js": "/vr-tracking-tool/static/js/2.f0201204.chunk.js",
+    "static/js/2.f0201204.chunk.js.map": "/vr-tracking-tool/static/js/2.f0201204.chunk.js.map",
+    "index.html": "/vr-tracking-tool/index.html",
+    "precache-manifest.fef20cc70a9b04c87e53a18a4ae0d732.js": "/vr-tracking-tool/precache-manifest.fef20cc70a9b04c87e53a18a4ae0d732.js",
+    "service-worker.js": "/vr-tracking-tool/service-worker.js",
+    "static/css/main.ed287022.chunk.css.map": "/vr-tracking-tool/static/css/main.ed287022.chunk.css.map",
+    "static/js/2.f0201204.chunk.js.LICENSE": "/vr-tracking-tool/static/js/2.f0201204.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cbff670e.js",
+    "static/js/2.f0201204.chunk.js",
+    "static/css/main.ed287022.chunk.css",
+    "static/js/main.09685a21.chunk.js"
+  ]
+}
