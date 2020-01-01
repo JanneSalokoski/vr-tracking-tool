@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/vr-tracking-tool/precache-manifest.244d91bbef960c0fd043da862494e63c.js"
+  "/vr-tracking-tool/precache-manifest.06440e3b8ac0c0336a5e097b72e980de.js"
 );
 
 self.addEventListener('message', (event) => {
