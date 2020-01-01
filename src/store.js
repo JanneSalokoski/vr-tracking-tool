@@ -13,8 +13,8 @@ const initialState = {
   meta: {
     version: {
       majorVersion: 0,
-      minorVersion: 1,
-      releaseType: "DEV",
+      minorVersion: 2,
+      releaseType: "ALPHA",
     }
   }
 };
