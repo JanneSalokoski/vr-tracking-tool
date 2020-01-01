@@ -1,0 +1,45 @@
+@import "../../../_defaults.scss";
+
+ol.AutocompleteItems {
+  position: absolute;
+  list-style: none;
+
+  text-align: left;
+
+  width: calc(80%);
+  max-width: calc(40em);
+
+  height: 30em;
+
+  left: 50%;
+  transform: translate(-50%);
+
+  overflow-y: hidden;
+
+  background-color: rgba(0, 0, 0, 0.9);
+  color: rgba(200, 200, 200, 0.8);
+
+  border-radius: $base-border-radius;
+
+  li.AutocompleteItem {
+    padding: $base-margin-small;
+
+    width: calc(100% - ($base-margin-small * 2));
+
+    display: block;
+
+  &:hover {
+    background-color: rgba(20, 20, 20, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  span.trainName {
+    font-weight: bold;
+  }
+
+  span:not(:first-child) {
+    margin-left: $base-margin-small;
+  }
+
+  }
+}

@@ -3,7 +3,11 @@ import React, {createContext, useReducer} from 'react';
 const initialState = {
   counter: 0,
   connected: false,
+  trainSearchQuery: "",
   trains: {},
+  liveTrains: {},
+  filteredLiveTrains: [],
+  trainSearch: false,
   stations: {},
   stationInfo: {},
   meta: {
@@ -28,9 +32,12 @@ const reducer = (state, action) => {
     case 'DISCONNECTED':
       newState.connected = false;
       return newState;
+    case 'TRAIN_SEARCH_QUERY_UPDATED':
+      newState.trainSearchQuery = action.query;
+      return newState;
     case 'SET_STATION_INFO':
       newState.stationInfo = action.data;
-      console.log(action.data);
+      //console.log(action.data);
       return newState;
     case 'CREATE_TRAIN':
       newState.trains[action.trainObject.trainName] = action.trainObject;
@@ -40,6 +47,19 @@ const reducer = (state, action) => {
       return newState;
     case 'TRACKING':
       newState.trains[action.train].currentStation = action.data.station;
+      return newState;
+    case 'LIVE_TRAINS_UPDATED':
+      newState.liveTrains = action.data;
+      //console.log(action.data);
+      return newState;
+    case 'FILTERED_LIVE_TRAINS_UPDATED':
+      newState.filteredLiveTrains = action.data;
+      return newState;
+    case 'TRAIN_SEARCH_ACTIVE':
+      newState.trainSearch = true;
+      return newState;
+    case 'TRAIN_SEARCH_ENDED':
+      newState.trainSearch = false;
       return newState;
     default:
       throw new Error();

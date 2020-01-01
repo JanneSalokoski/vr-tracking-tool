@@ -31,10 +31,15 @@ function VrTrackingTool() {
     dispatch({type: "SET_STATION_INFO", data: stationInfo});
   }
 
-  const init = () => {
+  const init = async () => {
     connectApplication();
-    getStationInfo();
   }
+
+  useEffect(() => {
+    if (state.connected) {
+      getStationInfo();
+    }
+  }, [state.connected]);
 
   // Run init only when loading app for the first time
   useEffect(() => {

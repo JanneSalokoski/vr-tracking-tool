@@ -1,6 +1,42 @@
 @import "../../../_defaults.scss";
 
 div.module.TrainView {
+
+  div.searchBar {
+    max-width: 40em;
+    width: 80%;
+
+    text-align: center;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input.trainSearchBar {
+    background-color: #111;
+    color: white;
+
+    width: calc(100% - 10em);
+
+    padding: $base-margin-small;
+    margin-top: $base-margin-small;
+
+    border: 1px solid #222;
+    border-radius: $base-border-radius;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  input.trainSearchSubmit {
+    width: 8em;
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    border: 1px solid #222;
+    border-left: none;
+  }
+
   div.trainList {
     display: grid;
     width: 100%;

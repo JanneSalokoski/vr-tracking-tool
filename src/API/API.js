@@ -95,6 +95,19 @@ const API = {
     return data;
   },
 
+  getLiveTrains: async () => {
+    const response = await API.getData("live-trains");
+    const data = response.data.map(train => ({
+      trainNumber: train.trainNumber,
+      trainType: train.trainType,
+      trainName: train.trainType + train.trainNumber,
+      firstStation: train.timeTableRows[0].stationShortCode,
+      lastStation: train.timeTableRows[train.timeTableRows.length-1].stationShortCode
+    }));
+
+    return data;
+  },
+
 
   // MQTT WebSocket
   MQTT: {

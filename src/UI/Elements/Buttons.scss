@@ -1,9 +1,12 @@
+@import "../../_defaults.scss";
+
+
 button, input[type="button"] {
   background-color: #222;
   color: white;
 
-  padding: 0.5em;
-  margin: 0.2em;
+  padding: $base-margin-small;
+  //margin: 0.2em;
 
   border: none;
   border-radius: 2px;
