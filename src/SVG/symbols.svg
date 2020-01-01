@@ -1,0 +1,47 @@
+<svg viewbox="0 0 300 500" xmlns="http://www.w3.org/2000/svg" transform="scale(0.15)" style="background-color: black">
+<!-- <svg viewbox="0 0 100 500" xmlns="http://www.w3.org/2000/svg" transform="scale(0.15)"> -->
+
+  <!-- Close-button -->
+  <g fill-opacity="1" stroke-linecap="round" stroke="#cc0000">
+		<circle cx="50" cy="50" r="45" fill="#ff0000" stroke-width="5"/>
+    <line x1="33" y1="33" x2="67" y2="67" stroke="#670000" stroke-width="15" />
+		<line x1="33" y1="67" x2="67" y2="33" stroke="#670000" stroke-width="15"/>
+  </g>
+
+  <!-- Minify-button -->
+  <g fill-opacity="1" stroke-linecap="round" stroke="#cccc00" transform="translate(100, 0)">
+		<circle cx="50" cy="50" r="45" fill="#ffff00" stroke-width="5"/>
+    <line x1="28" y1="50" x2="72" y2="50" stroke="#676700" stroke-width="15" />
+  </g>
+
+  <!-- Expand-button_open-->
+  <g fill-opacity="1" stroke="#00cc00" transform="translate(200, 0)">
+		<circle cx="50" cy="50" r="45" fill="#00ff00" stroke-width="5" />
+
+    <path d="M33    25.5   L75.5   25.5    L75.5   67  Z" fill="#006700" stroke-width="0" />
+    <path d="M25.5  33     L25.5   75.5    L67   75.5  Z" fill="#006700" stroke-width="0" />
+  </g>
+
+  <!-- Expand-button_close -->
+  <g fill-opacity="1" stroke-linecap="round" stroke="#00cc00" transform="translate(300, 0)">
+		<circle cx="50" cy="50" r="45" fill="#00ff00" stroke-width="5"/>
+    <path d="M33    25.5   L75.5   25.5    L75.5   67  Z" fill="#006700" stroke-width="0" transform="rotate(180, 61.33, 39.33)" />
+    <!-- <circle cx="61.33" cy="39.33" r="5" fill="#000000" stroke-width="0" /> -->
+    <path d="M25.5  33     L25.5   75.5    L67   75.5  Z" fill="#006700" stroke-width="0" transform="rotate(180, 39.33, 61.33)" />
+    <!-- <circle cx="39.33" cy="61.33" r="5" fill="#000000" stroke-width="0" /> -->
+  </g>
+
+  <!-- Contextmenu-button small -->
+  <g fill-opacity="1" stroke="#dddddd" transform="translate(0, 100)">
+    <circle cx="20" cy="50" r="10" fill="#ffffff" stroke-width="5" />
+		<circle cx="50" cy="50" r="10" fill="#ffffff" stroke-width="5" />
+    <circle cx="80" cy="50" r="10" fill="#ffffff" stroke-width="5" />
+  </g>
+
+  <!-- Contextmenu-button large -->
+  <g fill-opacity="1" stroke="#dddddd" transform="translate(100, 100)">
+    <circle cx="20" cy="50" r="20" fill="#ffffff" stroke-width="5" />
+		<circle cx="70" cy="50" r="20" fill="#ffffff" stroke-width="5" />
+    <circle cx="120" cy="50" r="20" fill="#ffffff" stroke-width="5" />
+  </g>
+</svg>

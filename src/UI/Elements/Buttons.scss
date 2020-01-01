@@ -1,0 +1,155 @@
+button, input[type="button"] {
+  background-color: #222;
+  color: white;
+
+  padding: 0.5em;
+  margin: 0.2em;
+
+  border: none;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: #111;
+  }
+
+  &:active {
+    background-color: #000;
+  }
+
+  &.close, &.minify, &.expand {
+    background-color: inherit;
+    border: none;
+
+    padding: 0px;
+    margin: 0px;
+
+    height: 1.2em;
+    width: 1.2em;
+
+    overflow: visible;
+  }
+
+  &.contextMenuButton {
+    background-color: inherit;
+    border: none;
+
+    padding: 0px;
+    margin: 0px;
+
+    height: 1.5em;
+    width: 1.5em;
+
+    overflow: visible;
+  }
+}
+
+// CloseButton
+button.close {
+  $background-color: #f53d33;
+  $foreground-color: darken($background-color, 25%);
+
+  .SVG_symbol_close {
+    width: 1.2em;
+    height: 1.2em;
+
+    circle {
+      stroke: darken($background-color, 20%);
+      fill: $background-color;
+    }
+
+    line {
+      stroke: $background-color;
+    }
+  }
+
+  &:hover {
+    .SVG_symbol_close line {
+      stroke: darken($background-color, 30%);
+    }
+  }
+
+  &:active {
+    .SVG_symbol_close circle {
+      fill: darken($background-color, 10%);;
+      stroke: darken($background-color, 30%);
+    }
+
+    .SVG_symbol_close line {
+      stroke: darken($background-color, 40%);
+    }
+  }
+}
+
+// MinifyButton
+button.minify {
+  $background-color: #f5cb33;
+  $foreground-color: darken($background-color, 25%);
+
+  svg{
+    width: 1.2em;
+    height: 1.2em;
+
+    circle {
+      stroke: darken($background-color, 20%);
+      fill: $background-color;
+    }
+
+    line {
+      stroke: $background-color;
+    }
+  }
+
+  &:hover {
+    svg line {
+      stroke: darken($background-color, 30%);
+    }
+  }
+
+  &:active {
+    svg circle {
+      fill: darken($background-color, 10%);;
+      stroke: darken($background-color, 30%);
+    }
+
+    svg line {
+      stroke: darken($background-color, 40%);
+    }
+  }
+}
+
+// ExpandButton
+button.expand {
+  $background-color: #2bd64b;
+  $foreground-color: darken($background-color, 25%);
+
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+
+    circle {
+      stroke: darken($background-color, 20%);
+      fill: $background-color;
+    }
+
+    path {
+      fill: $background-color;
+    }
+  }
+
+  &:hover {
+    svg path {
+      fill: darken($background-color, 30%);
+    }
+  }
+
+  &:active {
+    svg circle {
+      fill: darken($background-color, 10%);;
+      stroke: darken($background-color, 30%);
+    }
+
+    svg path {
+      fill: darken($background-color, 40%);
+    }
+  }
+}

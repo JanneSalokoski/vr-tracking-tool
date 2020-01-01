@@ -9,8 +9,8 @@ div.TrainItem {
 
   display: grid;
 
-  grid-template-columns: 3em auto 3em;
-  grid-template-rows: auto;
+  grid-template-columns: 5em auto 5em;
+  grid-template-rows: 2em 2em auto 2em;
 
   grid-template-areas:
     "controls title settings"
@@ -29,6 +29,10 @@ div.TrainItem {
   div.controls {
     grid-area: controls;
     overflow: none;
+
+    button:not(:first-child) {
+      margin-left: $base-margin-small;
+    }
   }
 
   div.title {
@@ -45,6 +49,42 @@ div.TrainItem {
   div.o-d {
     grid-area: o-d;
     text-align: center;
+
+    margin-bottom: $base-margin-small;
+
+    span:not(:first-child) {
+      margin-left: $base-margin-extrasmall;
+    }
+
+    span.startTime {
+      background-color: #222;
+      padding: $base-margin-extrasmall;
+      border-radius: $base-border-radius;
+    }
+
+    span.from {
+      background-color: #0000aa;
+      padding: $base-margin-extrasmall;
+      border-radius: $base-border-radius;
+    }
+
+    span.separator {
+      background-color: #222;
+      padding: $base-margin-extrasmall;
+      border-radius: $base-border-radius;
+    }
+
+    span.to {
+      background-color: darkRed;
+      padding: $base-margin-extrasmall;
+      border-radius: $base-border-radius;
+    }
+
+    span.endTime {
+      background-color: #222;
+      padding: $base-margin-extrasmall;
+      border-radius: $base-border-radius;
+    }
   }
 
   div.timetable {
@@ -52,6 +92,37 @@ div.TrainItem {
 
     table {
       width: 100%;
+
+      margin-bottom: $base-margin-small;
+      margin-top: $base-margin-small;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      border-collapse: collapse;
+
+      td, th {
+        padding: $base-margin-extrasmall;
+        text-align: left;
+      }
+
+      td {
+        border: 1px solid #222;
+      }
+
+      th {
+        border: 1px solid #333;
+      }
+
+      thead tr {
+        background-color: #222;
+        color: white;
+      }
+
+      tbody tr:hover {
+        background-color: #161616;
+      }
 
       tr.STOP {
 
@@ -63,20 +134,60 @@ div.TrainItem {
 
       tr.currentStation {
         background-color: darkred;
+
+        td {
+          border: 1px solid #aa0000;
+        }
+
+        &:hover td {
+          background-color: #aa0000;
+          border: 1px solid #dd0000;
+        }
       }
 
       tr.currentStation.PASS {
         visibility: visible;
         color: red;
       }
+
+      td.stationShortCode {
+        width: 3em;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 
   div.status {
     grid-area: status;
+
+    padding: $base-margin-extrasmall;
+    border-radius: $base-border-radius;
+
+    text-align: center;
+
+    &.online {
+      background-color: green;
+    }
+
+    &.offline {
+      background-color: darkRed;
+    }
   }
 
   div.info {
     grid-area: info;
+
+    color: #888;
+
+    background-color: #222;
+    border-radius: 2px;
+
+    text-align: center;
+
+    padding: $base-margin-extrasmall;
+    margin-left: $base-margin-small;
   }
 }

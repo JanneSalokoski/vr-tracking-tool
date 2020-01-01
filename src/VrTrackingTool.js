@@ -47,7 +47,7 @@ function VrTrackingTool() {
       <input type="button" value="Connect" onClick={connectApplication} />
       <input type="button" value="Disconnect" onClick={() => API.disconnect(() => {dispatch({type: "DISCONNECTED"})})} />
       <Components.TrainView />
-        </div>
+    </div>
   );
 }
 

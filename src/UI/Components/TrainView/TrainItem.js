@@ -1,6 +1,12 @@
 import React, {useContext} from 'react';
 import dateFormat from "dateformat";
 
+import Button from "../../Elements/Button.js";
+import CloseButton from "../../Elements/CloseButton.js";
+import MinifyButton from "../../Elements/MinifyButton.js";
+import ExpandButton from "../../Elements/ExpandButton.js";
+import ContextMenuButton from "../../Elements/ContextMenuButton.js";
+
 import {store} from "../../../store.js";
 
 import "./TrainItem.scss";
@@ -29,16 +35,22 @@ const TrainItem = (props) => {
 
   return(
     <div className={"TrainItem " + props.data.elementStatus}>
-      <div className="controls">[X][↑][O]</div>
+      <div className="controls">
+        <CloseButton callback={() => console.log("Close")} />
+        <MinifyButton callback={() => console.log("Minify")} />
+        <ExpandButton expanded={false} callback={() => console.log("Toggle expansion")} />
+      </div>
       <div className="title">{props.data.trainName}</div>
-      <div className="settings">...</div>
+      <div className="settings">
+        <ContextMenuButton callback={() => {console.log("Open context menu")}} />
+      </div>
 
       <div className="o-d">
-        <span className="startTime">{`[${formatTime(props.data.fromStation.departure.scheduledTime)}] `}</span>
+        <span className="startTime">{`${formatTime(props.data.fromStation.departure.scheduledTime)}`}</span>
         <span className="from">{state.stationInfo[props.data.fromStation.stationShortCode].stationName}</span>
         <span className="separator"> → </span>
         <span className="to">{state.stationInfo[props.data.toStation.stationShortCode].stationName}</span>
-        <span className="endTime">{` [${formatTime(props.data.toStation.arrival.scheduledTime)}]`}</span>
+        <span className="endTime">{`${formatTime(props.data.toStation.arrival.scheduledTime)}`}</span>
       </div>
 
       <div className="timetable">
@@ -58,9 +70,11 @@ const TrainItem = (props) => {
         </table>
       </div>
 
-      <div className="status">{props.data.runningCurrently ? "ONLINE" : "OFFLINE"}</div>
+      <div className={"status " + (props.data.runningCurrently ? "online" : "offline")}>{props.data.runningCurrently ? "ONLINE" : "OFFLINE"}</div>
 
-      <div className="info"></div>
+      <div className="info">
+        No additional info
+      </div>
     </div>
   );
 }
