@@ -51,6 +51,7 @@ div.TrainItem {
     text-align: center;
 
     margin-bottom: $base-margin-small;
+    margin-top: $base-margin-extrasmall;
 
     span:not(:first-child) {
       margin-left: $base-margin-extrasmall;
@@ -94,7 +95,7 @@ div.TrainItem {
       width: 100%;
 
       margin-bottom: $base-margin-small;
-      margin-top: $base-margin-small;
+      margin-top: $base-margin-normal;
 
       white-space: nowrap;
       overflow: hidden;

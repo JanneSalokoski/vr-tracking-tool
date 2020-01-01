@@ -7,7 +7,17 @@ const MQTT = require("paho-mqtt");
 class TimeTableEvent {
   constructor(data) {
     this.scheduledTime = data.scheduledTime;
-    this.liveEstimateTime = data.liveEstimateTime;
+    this.differenceInMinutes = data.differenceInMinutes ? data.differenceInMinutes : 0;
+    this.liveEstimateTime = data.actualTime || data.liveEstimateTime;
+
+    if (!this.liveEstimateTime & Object.entries(data).length > 0) {
+      this.liveEstimateTime = new Date(new Date(this.scheduledTime).getTime() + this.differenceInMinutes * 60000);
+      // console.log(this.liveEstimateTime)
+    }
+
+    if (!this.scheduledTime) {
+      this.differenceInMinutes = undefined;
+    }
   }
 }
 

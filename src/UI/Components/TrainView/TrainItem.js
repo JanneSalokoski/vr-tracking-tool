@@ -20,15 +20,22 @@ const TrainItem = (props) => {
   const applicationState = useContext(store);
   const {state, dispatch} = applicationState;
 
-  const getTimeTableRow = (row) => (
-    <tr key={row.stationShortCode} className={`row ${row.commercialStop ? "STOP" : "PASS"} ${(row.stationShortCode === props.data.currentStation) ? "currentStation" : ""}`}>
+  const getTimeTableRow = (row) => {
+		return (
+    <tr key={row.stationShortCode}
+      className={`row ${row.commercialStop ? "STOP" : "PASS"} ${(row.stationShortCode === props.data.currentStation && props.data.runningCurrently) ? "currentStation" : ""}`}>
       <td className="stationShortCode">{state.stationInfo[row.stationShortCode].stationName}</td>
       <td className="commercialTrack">{row.commercialTrack}</td>
-      <td className="departure">{formatTime(row.departure.scheduledTime)}</td>
-      <td className="delay">{row.differenceInMinutes}</td>
-      <td className="liveEstimateTime">{formatTime(row.liveEstimateTime)}</td>
+
+      <td className="arrival_time">{formatTime(row.arrival.scheduledTime)}</td>
+      <td className="arrival_delay">{row.arrival.differenceInMinutes}</td>
+      <td className="arrival_liveEstimateTime">{formatTime(row.arrival.liveEstimateTime)}</td>
+
+      {props.data.runningCurrently ? (<td className="departure_time">{formatTime(row.departure.scheduledTime)}</td>) : ""}
+      {props.data.runningCurrently ? (<td className="departure_delay">{row.departure.differenceInMinutes}</td>) : ""}
+      {props.data.runningCurrently ? (<td className="departure_liveEstimateTime">{formatTime(row.departure.liveEstimateTime)}</td>) : ""}
     </tr>
-  );
+  )};
 
   const getTimeTableRows = (rows) =>
     rows.map(row => getTimeTableRow(row));
@@ -59,9 +66,15 @@ const TrainItem = (props) => {
             <tr>
               <th>Station</th>
               <th>Track</th>
-              <th>Departure</th>
-              <th>Delay</th>
-              <th>Estimate</th>
+
+              {props.data.runningCurrently ? (<th>Arrival time</th>) : (<th>Time</th>)}
+              {props.data.runningCurrently ? (<th>Arrival delay</th>) : (<th>Delay</th>)}
+              {props.data.runningCurrently ? (<th>Arrival estimate</th>) : (<th>Estimate</th>)}
+
+              {props.data.runningCurrently ? (<th>Departure time</th>) : ""}
+              {props.data.runningCurrently ? (<th>Departure delay</th>) : ""}
+              {props.data.runningCurrently ? (<th>Departure estimate</th>) : ""}
+
             </tr>
           </thead>
           <tbody>
